@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react/jsx-key */
+import Header from "./Header";
+import Content from "./Content";
+import Total from "./Total";
 
-function App() {
+const App = () => {
+  const courseName = "Half Stack application development";
+  const courseParts = [
+    {
+      name: "Fundamentals",
+      exerciseCount: 10,
+    },
+    {
+      name: "Using props to pass data",
+      exerciseCount: 7,
+    },
+    {
+      name: "Deeper type usage",
+      exerciseCount: 14,
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header name={courseName} />
+      <Content content={courseParts} />
+      <Total
+        total={courseParts.reduce(
+          (carry, part) => carry + part.exerciseCount,
+          0
+        )}
+      />
     </div>
   );
-}
+};
 
 export default App;
